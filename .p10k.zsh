@@ -33,8 +33,16 @@
   typeset -g POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(
     # =========================[ Line #1 ]=========================
     # os_icon               # os identifier
+    context                 # user@hostname
+    ip                      # ip address and bandwidth usage for a specified network interface
     dir                     # current directory
     vcs                     # git status
+    status                  # exit code of the last command
+    command_execution_time  # duration of the last command
+    background_jobs         # presence of background jobs
+    virtualenv              # python virtual environment (https://docs.python.org/3/library/venv.html)
+    anaconda                # conda environment (https://conda.io/)
+    pyenv                   # python environment (https://github.com/pyenv/pyenv)
     # =========================[ Line #2 ]=========================
     newline                 # \n
     prompt_char             # prompt symbol
@@ -46,68 +54,68 @@
   # last prompt line gets hidden if it would overlap with left prompt.
   typeset -g POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(
     # =========================[ Line #1 ]=========================
-    status                  # exit code of the last command
-    command_execution_time  # duration of the last command
-    background_jobs         # presence of background jobs
-    direnv                  # direnv status (https://direnv.net/)
-    asdf                    # asdf version manager (https://github.com/asdf-vm/asdf)
-    virtualenv              # python virtual environment (https://docs.python.org/3/library/venv.html)
-    anaconda                # conda environment (https://conda.io/)
-    pyenv                   # python environment (https://github.com/pyenv/pyenv)
-    goenv                   # go environment (https://github.com/syndbg/goenv)
-    nodenv                  # node.js version from nodenv (https://github.com/nodenv/nodenv)
-    nvm                     # node.js version from nvm (https://github.com/nvm-sh/nvm)
-    nodeenv                 # node.js environment (https://github.com/ekalinin/nodeenv)
-    # node_version          # node.js version
-    # go_version            # go version (https://golang.org)
-    # rust_version          # rustc version (https://www.rust-lang.org)
-    # dotnet_version        # .NET version (https://dotnet.microsoft.com)
-    # php_version           # php version (https://www.php.net/)
-    # laravel_version       # laravel php framework version (https://laravel.com/)
-    # java_version          # java version (https://www.java.com/)
-    # package               # name@version from package.json (https://docs.npmjs.com/files/package.json)
-    rbenv                   # ruby version from rbenv (https://github.com/rbenv/rbenv)
-    rvm                     # ruby version from rvm (https://rvm.io)
-    fvm                     # flutter version management (https://github.com/leoafarias/fvm)
-    luaenv                  # lua version from luaenv (https://github.com/cehoffman/luaenv)
-    jenv                    # java version from jenv (https://github.com/jenv/jenv)
-    plenv                   # perl version from plenv (https://github.com/tokuhirom/plenv)
-    perlbrew                # perl version from perlbrew (https://github.com/gugod/App-perlbrew)
-    phpenv                  # php version from phpenv (https://github.com/phpenv/phpenv)
-    scalaenv                # scala version from scalaenv (https://github.com/scalaenv/scalaenv)
-    haskell_stack           # haskell version from stack (https://haskellstack.org/)
-    kubecontext             # current kubernetes context (https://kubernetes.io/)
-    terraform               # terraform workspace (https://www.terraform.io)
-    # terraform_version     # terraform version (https://www.terraform.io)
-    aws                     # aws profile (https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-profiles.html)
-    aws_eb_env              # aws elastic beanstalk environment (https://aws.amazon.com/elasticbeanstalk/)
-    azure                   # azure account name (https://docs.microsoft.com/en-us/cli/azure)
-    gcloud                  # google cloud cli account and project (https://cloud.google.com/)
-    google_app_cred         # google application credentials (https://cloud.google.com/docs/authentication/production)
-    toolbox                 # toolbox name (https://github.com/containers/toolbox)
-    context                 # user@hostname
-    nordvpn                 # nordvpn connection status, linux only (https://nordvpn.com/)
-    ranger                  # ranger shell (https://github.com/ranger/ranger)
-    nnn                     # nnn shell (https://github.com/jarun/nnn)
-    lf                      # lf shell (https://github.com/gokcehan/lf)
-    xplr                    # xplr shell (https://github.com/sayanarijit/xplr)
-    vim_shell               # vim shell indicator (:sh)
-    midnight_commander      # midnight commander shell (https://midnight-commander.org/)
-    nix_shell               # nix shell (https://nixos.org/nixos/nix-pills/developing-with-nix-shell.html)
-    chezmoi_shell           # chezmoi shell (https://www.chezmoi.io/)
-    # vpn_ip                # virtual private network indicator
-    # load                  # CPU load
-    # disk_usage            # disk usage
-    # ram                   # free RAM
-    # swap                  # used swap
-    todo                    # todo items (https://github.com/todotxt/todo.txt-cli)
-    timewarrior             # timewarrior tracking status (https://timewarrior.net/)
-    taskwarrior             # taskwarrior task count (https://taskwarrior.org/)
-    per_directory_history   # Oh My Zsh per-directory-history local/global indicator
-    # cpu_arch              # CPU architecture
-    time                    # current time
+    # status                  # exit code of the last command
+    # command_execution_time  # duration of the last command
+    # background_jobs         # presence of background jobs
+    # direnv                  # direnv status (https://direnv.net/)
+    # asdf                    # asdf version manager (https://github.com/asdf-vm/asdf)
+    # virtualenv              # python virtual environment (https://docs.python.org/3/library/venv.html)
+    # anaconda                # conda environment (https://conda.io/)
+    # pyenv                   # python environment (https://github.com/pyenv/pyenv)
+    # goenv                   # go environment (https://github.com/syndbg/goenv)
+    # nodenv                  # node.js version from nodenv (https://github.com/nodenv/nodenv)
+    # nvm                     # node.js version from nvm (https://github.com/nvm-sh/nvm)
+    # nodeenv                 # node.js environment (https://github.com/ekalinin/nodeenv)
+    # node_version            # node.js version
+    # go_version              # go version (https://golang.org)
+    # rust_version            # rustc version (https://www.rust-lang.org)
+    # dotnet_version          # .NET version (https://dotnet.microsoft.com)
+    # php_version             # php version (https://www.php.net/)
+    # laravel_version         # laravel php framework version (https://laravel.com/)
+    # java_version            # java version (https://www.java.com/)
+    # package                 # name@version from package.json (https://docs.npmjs.com/files/package.json)
+    # rbenv                   # ruby version from rbenv (https://github.com/rbenv/rbenv)
+    # rvm                     # ruby version from rvm (https://rvm.io)
+    # fvm                     # flutter version management (https://github.com/leoafarias/fvm)
+    # luaenv                  # lua version from luaenv (https://github.com/cehoffman/luaenv)
+    # jenv                    # java version from jenv (https://github.com/jenv/jenv)
+    # plenv                   # perl version from plenv (https://github.com/tokuhirom/plenv)
+    # perlbrew                # perl version from perlbrew (https://github.com/gugod/App-perlbrew)
+    # phpenv                  # php version from phpenv (https://github.com/phpenv/phpenv)
+    # scalaenv                # scala version from scalaenv (https://github.com/scalaenv/scalaenv)
+    # haskell_stack           # haskell version from stack (https://haskellstack.org/)
+    # kubecontext             # current kubernetes context (https://kubernetes.io/)
+    # terraform               # terraform workspace (https://www.terraform.io)
+    # terraform_version       # terraform version (https://www.terraform.io)
+    # aws                     # aws profile (https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-profiles.html)
+    # aws_eb_env              # aws elastic beanstalk environment (https://aws.amazon.com/elasticbeanstalk/)
+    # azure                   # azure account name (https://docs.microsoft.com/en-us/cli/azure)
+    # gcloud                  # google cloud cli account and project (https://cloud.google.com/)
+    # google_app_cred         # google application credentials (https://cloud.google.com/docs/authentication/production)
+    # toolbox                 # toolbox name (https://github.com/containers/toolbox)
+    # context                 # user@hostname
+    # nordvpn                 # nordvpn connection status, linux only (https://nordvpn.com/)
+    # ranger                  # ranger shell (https://github.com/ranger/ranger)
+    # nnn                     # nnn shell (https://github.com/jarun/nnn)
+    # lf                      # lf shell (https://github.com/gokcehan/lf)
+    # xplr                    # xplr shell (https://github.com/sayanarijit/xplr)
+    # vim_shell               # vim shell indicator (:sh)
+    # midnight_commander      # midnight commander shell (https://midnight-commander.org/)
+    # nix_shell               # nix shell (https://nixos.org/nixos/nix-pills/developing-with-nix-shell.html)
+    # chezmoi_shell           # chezmoi shell (https://www.chezmoi.io/)
+    # vpn_ip                  # virtual private network indicator
+    # load                    # CPU load
+    # disk_usage              # disk usage
+    # ram                     # free RAM
+    # swap                    # used swap
+    # todo                    # todo items (https://github.com/todotxt/todo.txt-cli)
+    # timewarrior             # timewarrior tracking status (https://timewarrior.net/)
+    # taskwarrior             # taskwarrior task count (https://taskwarrior.org/)
+    # per_directory_history   # Oh My Zsh per-directory-history local/global indicator
+    # cpu_arch                # CPU architecture
+    # time                    # current time
     # =========================[ Line #2 ]=========================
-    newline
+    # newline
     # ip                    # ip address and bandwidth usage for a specified network interface
     # public_ip             # public IP address
     # proxy                 # system-wide http/https/ftp proxy
@@ -426,13 +434,13 @@
       res+=" ${modified}wip"
     fi
 
-    if (( VCS_STATUS_COMMITS_AHEAD || VCS_STATUS_COMMITS_BEHIND )); then
-      # ⇣42 if behind the remote.
-      (( VCS_STATUS_COMMITS_BEHIND )) && res+=" ${clean}⇣${VCS_STATUS_COMMITS_BEHIND}"
-      # ⇡42 if ahead of the remote; no leading space if also behind the remote: ⇣42⇡42.
-      (( VCS_STATUS_COMMITS_AHEAD && !VCS_STATUS_COMMITS_BEHIND )) && res+=" "
-      (( VCS_STATUS_COMMITS_AHEAD  )) && res+="${clean}⇡${VCS_STATUS_COMMITS_AHEAD}"
-    elif [[ -n $VCS_STATUS_REMOTE_BRANCH ]]; then
+if (( VCS_STATUS_COMMITS_AHEAD || VCS_STATUS_COMMITS_BEHIND )); then
+    # ⇣42 if behind the remote.
+    (( VCS_STATUS_COMMITS_BEHIND )) && res+=" ${clean}⇣${VCS_STATUS_COMMITS_BEHIND}"
+    # ⇡42 if ahead of the remote; no leading space if also behind the remote: ⇣42⇡42.
+    (( VCS_STATUS_COMMITS_AHEAD && !VCS_STATUS_COMMITS_BEHIND )) && res+=" "
+    (( VCS_STATUS_COMMITS_AHEAD  )) && res+="${clean}⇡${VCS_STATUS_COMMITS_AHEAD}"
+elif [[ -n $VCS_STATUS_REMOTE_BRANCH ]]; then
       # Tip: Uncomment the next line to display '=' if up to date with the remote.
       # res+=" ${clean}="
     fi
@@ -548,7 +556,7 @@
   # Show duration of the last command if takes at least this many seconds.
   typeset -g POWERLEVEL9K_COMMAND_EXECUTION_TIME_THRESHOLD=3
   # Show this many fractional digits. Zero means round to seconds.
-  typeset -g POWERLEVEL9K_COMMAND_EXECUTION_TIME_PRECISION=0
+  typeset -g POWERLEVEL9K_COMMAND_EXECUTION_TIME_PRECISION=1
   # Execution time color.
   typeset -g POWERLEVEL9K_COMMAND_EXECUTION_TIME_FOREGROUND=101
   # Duration format: 1d 2h 3m 4s.
@@ -897,7 +905,7 @@
   # Context color when running with privileges.
   typeset -g POWERLEVEL9K_CONTEXT_ROOT_FOREGROUND=178
   # Context color in SSH without privileges.
-  typeset -g POWERLEVEL9K_CONTEXT_{REMOTE,REMOTE_SUDO}_FOREGROUND=180
+  typeset -g POWERLEVEL9K_CONTEXT_{REMOTE,REMOTE_SUDO}_FOREGROUND=135
   # Default context color (no privileges, no SSH).
   typeset -g POWERLEVEL9K_CONTEXT_FOREGROUND=180
 
@@ -910,7 +918,7 @@
 
   # Don't show context unless running with privileges or in SSH.
   # Tip: Remove the next line to always show context.
-  typeset -g POWERLEVEL9K_CONTEXT_{DEFAULT,SUDO}_{CONTENT,VISUAL_IDENTIFIER}_EXPANSION=
+  # typeset -g POWERLEVEL9K_CONTEXT_{DEFAULT,SUDO}_{CONTENT,VISUAL_IDENTIFIER}_EXPANSION=
 
   # Custom icon.
   # typeset -g POWERLEVEL9K_CONTEXT_VISUAL_IDENTIFIER_EXPANSION='⭐'
@@ -932,7 +940,7 @@
 
   #####################[ anaconda: conda environment (https://conda.io/) ]######################
   # Anaconda environment color.
-  typeset -g POWERLEVEL9K_ANACONDA_FOREGROUND=37
+  typeset -g POWERLEVEL9K_ANACONDA_FOREGROUND=220
 
   # Anaconda segment format. The following parameters are available within the expansion.
   #
@@ -961,7 +969,7 @@
   typeset -g POWERLEVEL9K_ANACONDA_CONTENT_EXPANSION='${${${${CONDA_PROMPT_MODIFIER#\(}% }%\)}:-${CONDA_PREFIX:t}}'
 
   # Custom icon.
-  # typeset -g POWERLEVEL9K_ANACONDA_VISUAL_IDENTIFIER_EXPANSION='⭐'
+  typeset -g POWERLEVEL9K_ANACONDA_VISUAL_IDENTIFIER_EXPANSION=''
 
   ################[ pyenv: python environment (https://github.com/pyenv/pyenv) ]################
   # Pyenv color.
@@ -1562,7 +1570,7 @@
 
   ###########[ ip: ip address and bandwidth usage for a specified network interface ]###########
   # IP color.
-  typeset -g POWERLEVEL9K_IP_FOREGROUND=38
+  typeset -g POWERLEVEL9K_IP_FOREGROUND=147
   # The following parameters are accessible within the expansion:
   #
   #   Parameter             | Meaning
@@ -1575,12 +1583,12 @@
   #   P9K_IP_TX_BYTES_DELTA | number of bytes sent since last prompt
   #   P9K_IP_RX_RATE        | receive rate (since last prompt)
   #   P9K_IP_TX_RATE        | send rate (since last prompt)
-  typeset -g POWERLEVEL9K_IP_CONTENT_EXPANSION='$P9K_IP_IP${P9K_IP_RX_RATE:+ %70F⇣$P9K_IP_RX_RATE}${P9K_IP_TX_RATE:+ %215F⇡$P9K_IP_TX_RATE}'
+  typeset -g POWERLEVEL9K_IP_CONTENT_EXPANSION='$P9K_IP_IP'
   # Show information for the first network interface whose name matches this regular expression.
   # Run `ifconfig` or `ip -4 a show` to see the names of all network interfaces.
   typeset -g POWERLEVEL9K_IP_INTERFACE='[ew].*'
   # Custom icon.
-  # typeset -g POWERLEVEL9K_IP_VISUAL_IDENTIFIER_EXPANSION='⭐'
+  typeset -g POWERLEVEL9K_IP_VISUAL_IDENTIFIER_EXPANSION=''
 
   #########################[ proxy: system-wide http/https/ftp proxy ]##########################
   # Proxy color.
