@@ -32,6 +32,8 @@
   typeset -g POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(
     # =========================[ Line #1 ]=========================
     os_icon                 # os identifier
+    context                 # user@hostname
+    ip                      # ip address and bandwidth usage for a specified network interface
     dir                     # current directory
     vcs                     # git status
     status                  # exit code of the last command
